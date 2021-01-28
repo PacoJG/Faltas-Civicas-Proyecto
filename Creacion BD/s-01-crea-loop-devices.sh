@@ -5,6 +5,7 @@
 # Descripcion: Shell script que crea los loops device, los cuales simulan
 #              discos.
 
+#Crear carpeta
 mkdir -p /unam-bda
 cd /unam-bda
 
