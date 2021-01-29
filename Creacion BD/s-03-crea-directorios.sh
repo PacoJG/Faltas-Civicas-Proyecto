@@ -2,7 +2,7 @@
 # Autores: Jaime Garcia Frnacisco
 #      	Mora Magaña Jose David Divad
 # Fecha: 24/01/2021
-# Descripcion: Creacion de los directorios.
+# Descripcion: Creacion de los directorios para el funcionamient0.
 
 mkdir -p /disk_2/app/oracle/oradata/jamoproy
 mkdir -p /disk_2/app/oracle/oradata/jamoproy/REDO_LOGS
