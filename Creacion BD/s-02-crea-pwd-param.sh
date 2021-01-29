@@ -26,7 +26,7 @@ touch "${pass_dir}/${pfile_name}"
 echo "db_name=${ORACLE_SID}" >> "${pass_dir}/${pfile_name}"
 
 echo "control_files=(/u01/app/oracle/oradata/${ORACLE_SID}/control01.ctl," >> "${pass_dir}/${pfile_name}"
-echo " /disk_4/app/oracle/oradata/${ORACLE_SID}/control02.ctl," >> "${pass_dir}/${pfile_name}"
-echo " /disk_5/app/oracle/oradata/${ORACLE_SID}/control03.ctl)" >> "${pass_dir}/${pfile_name}"
+echo " /disk_2/app/oracle/oradata/${ORACLE_SID}/control02.ctl," >> "${pass_dir}/${pfile_name}"
+echo " /disk_3/app/oracle/oradata/${ORACLE_SID}/control03.ctl)" >> "${pass_dir}/${pfile_name}"
 
 echo "memory_target=1024M" >> "${pass_dir}/${pfile_name}"
