@@ -1,12 +1,7 @@
---
--- ER/Studio 8.0 SQL Code Generation
--- Company :      D
--- Project :      proyecto_er_v3.DM1
--- Author :       Dave
---
--- Date Created : Monday, February 01, 2021 19:01:37
--- Target DBMS : Oracle 11g
---
+--@Autores: Jaime Garcia Frnacisco
+--     	    Mora Magaña Jose David Divad
+--@Fecha:   01/02/2021
+--@Descripcion: Creacion de las tablas 
 
 -- 
 -- TABLE: LICENCIA 
@@ -237,7 +232,7 @@ CREATE TABLE TRABAJO_COMUNITARIO(
     HORAS                           NUMBER(18, 0)    NOT NULL,
     PUNTOS_RECUPERADOS              NUMBER(18, 0)    NOT NULL,
     LICENCIA_ID                     NUMBER(10, 0)    NOT NULL,
-    CONSTRAINT TRABAJO_COMUNITARIO_PK PRIMARY KEY (TRABAJO_COMUNITARIO_ID)
+    CONSTRAINT TRABAJO_COMUNITARIO_PK PRIMARY KEY (TRABAJO_COMUNITARIO_ID),
     CONSTRAINT TRABAJO_COMUNITARIO_TIPO_TRABAJO_COMUNITARIO_ID_FK FOREIGN KEY (TIPO_TRABAJO_COMUNITARIO_ID)
     REFERENCES TIPO_TRABAJO_COMUNITARIO(TRABAJO_COMUNITARIO_ID),
     CONSTRAINT TRABAJO_COMUNITARIO_LICENCIA_ID_FK FOREIGN KEY (LICENCIA_ID)
