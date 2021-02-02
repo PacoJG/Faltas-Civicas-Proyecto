@@ -5,12 +5,12 @@
 # Descripcion: Shell script que crea los loops device, los cuales simulan
 #              discos.
 
-mkdir -p /unam-bda
-cd /unam-bda
+mkdir -p /proyecto-bda
+cd /proyecto-bda
 
 #crear archivos binarios que simularan a los discos
-dd if=/dev/zero of=disk_2.img bs=100M count=10
-dd if=/dev/zero of=disk_3.img bs=100M count=10
+dd if=/dev/zero of=disk_2.img bs=200M count=10
+dd if=/dev/zero of=disk_3.img bs=200M count=10
 
 du -sh disk*.img
 echo 'Se crearon los archivos correctamente'
