@@ -1,7 +1,7 @@
 --@Autores: Jaime Garcia Frnacisco
 --     	    Mora Magaña Jose David Divad
 --@Fecha:   01/02/2021
---@Descripcion: Creacion de los tablespace para el proyecto.
+--@Descripcion: Creacion de los tablespace para el proyecto
 
 connect sys/systemproy as sysdba;
 
