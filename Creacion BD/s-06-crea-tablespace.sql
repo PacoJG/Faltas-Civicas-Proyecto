@@ -22,21 +22,21 @@ create tablespace tst_tramites
 ;
 
 create tablespace tsi_tramites
-    datafile '/u01/app/oracle/oradata/jamoproy/TBS/tsi_tramites.dbf' size 100m
+    datafile '/disk_3/app/oracle/oradata/jamoproy/TBS/tsi_tramites.dbf' size 100m
     autoextend on next 100m maxsize unlimited
     extent management local autoallocate
     segment space management auto
 ;
 
 create tablespace tst_ciudadanos
-    datafile '/u01/app/oracle/oradata/jamoproy/TBS/tst_ciudadanos.dbf' size 100m
+    datafile '/disk_2/app/oracle/oradata/jamoproy/TBS/tst_ciudadanos.dbf' size 100m
     autoextend on next 100m maxsize unlimited
     extent management local autoallocate
     segment space management auto
 ;
 
 create tablespace tsi_ciudadanos
-    datafile '/u01/app/oracle/oradata/jamoproy/TBS/tsi_ciudadanos.dbf' size 100m
+    datafile '/disk_3/app/oracle/oradata/jamoproy/TBS/tsi_ciudadanos.dbf' size 100m
     autoextend on next 100m maxsize unlimited
     extent management local autoallocate
     segment space management auto
