@@ -4,10 +4,6 @@
 --@Descripcion: Creacion de la Base de Datos con la instrucción
 --              create database
 
-
-connect sys/systemproy as sysdba;
-startup nomount
-
 whenever sqlerror exit rollback;
 
 create database jamoproy
