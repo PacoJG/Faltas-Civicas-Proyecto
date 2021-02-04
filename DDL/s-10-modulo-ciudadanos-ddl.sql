@@ -3,6 +3,8 @@
 --@Fecha:   01/02/2021
 --@Descripcion: Creacion de las tablas del modulo CIUDADANOS y su secuencia
 
+connect admin_ciudadanos/ciudadanos
+
 -- 
 -- TABLE: LICENCIA
 --
@@ -205,4 +207,5 @@ CREATE TABLE TRABAJO_COMUNITARIO(
         TABLESPACE TSI_CIUDADANOS)
 ) TABLESPACE TST_CIUDADANOS;
 
-
+connect sys/systemproy as sysdba;
+grant references on admin_ciudadanos.auto to admin_tramites;
