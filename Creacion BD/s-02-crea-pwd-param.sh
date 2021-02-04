@@ -14,7 +14,7 @@ if [ -f "${pass_dir}/${pass_name}" ]; then
   rm "${pass_dir}/${pass_name}"
 fi
 
-orapwd FILE="${pass_dir}"/"${pass_name}" FORCE=y FORMAT=12.2 SYS=password SYSBAKCUP=password
+orapwd FILE="${pass_dir}"/"${pass_name}" FORCE=y FORMAT=12.2 SYS=password SYSBACKUP=password
 
 if [ -f "${pass_dir}/${pfile_name}" ]; then
   #Si ya existe un respaldo lo elimina
