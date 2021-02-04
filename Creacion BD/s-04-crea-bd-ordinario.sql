@@ -40,12 +40,12 @@ tempfile '/u01/app/oracle/oradata/jamoproy/TBS/temp01.dbf'
 size 20m reuse autoextend on next 640k maxsize unlimited
 undo tablespace undotbs1
 datafile '/u01/app/oracle/oradata/jamoproy/TBS/undotbs01.dbf'
-size 200m reuse autoextend on next 5120k maxsize unlimited;
+size 200m reuse autoextend on next 5120k maxsize unlimited
 user_data tablespace usertbs
 datafile '/u01/app/oracle/oradata/jamoproy/TBS/usertbs01.dbf'
 size 200m reuse autoextend on maxsize unlimited;
 
 alter user sys identified by systemproy;
 alter user system identified by systemproy;
-create pfile from spfile;
+
 whenever sqlerror continue none;
