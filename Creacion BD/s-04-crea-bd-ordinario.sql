@@ -4,13 +4,9 @@
 --@Descripcion: Creacion de la Base de Datos con la instrucción
 --              create database
 
-<<<<<<< HEAD
-=======
-
 connect sys/hola123* as sysdba;
 startup nomount
 
->>>>>>> 6371bbfe000e55757e6240a08a2a2ce884380f63
 whenever sqlerror exit rollback;
 
 create database jamoproy
