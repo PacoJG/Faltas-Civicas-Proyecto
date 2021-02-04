@@ -5,7 +5,7 @@
 --              create database
 
 
-connect sys/systemproy1* as sysdba;
+connect sys/hola123* as sysdba;
 startup nomount
 
 whenever sqlerror exit rollback;
