@@ -11,7 +11,8 @@ create user admin_ciudadanos identified by ciudadanos
   quota unlimited on tsi_ciudadanos
   quota unlimited on comun_blob;
 
-grant create table, create session, create sequence to admin_ciudadanos;
+grant create table, create session, create sequence, create procedure to admin_ciudadanos;
+grant create any index to admin_ciudadanos;
 
 
 create user admin_tramites identified by tramites
@@ -20,7 +21,7 @@ create user admin_tramites identified by tramites
   quota unlimited on tsi_tramites
   quota unlimited on comun_blob;
 
-grant create table, create session, create sequence to admin_tramites;
-
+grant create table, create session, create sequence, create procedure to admin_tramites;
+grant create any index to admin_tramites;
 
 

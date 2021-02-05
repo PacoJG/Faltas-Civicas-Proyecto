@@ -3,6 +3,8 @@
 --@Fecha:   01/02/2021
 --@Descripcion: Script que generá una configuración en modo compartido
 
+connect sys/systemproy as sysdba;
+
 create spfile from pfile;
 alter system set db_domain='fi.unam' scope=spfile;
 alter system set dispatchers='(dispatchers=3)(protocol=tcp)' scope=spfile;
@@ -13,5 +15,3 @@ alter system register;
 
 --Lista de servicios registrados en el listener
 !lsnrctl services
-
-Prompt Reiniciar instancia para ver cambios reflejados

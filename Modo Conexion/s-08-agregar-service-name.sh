@@ -3,6 +3,8 @@
 # Fecha: 24/01/2021
 # Descripcion: Shell script que agrega un nuevo service name a tnsname.ora
 
+#Ejecutar como root
+
 cat <<'EOF' >> ${ORACLE_HOME}/network/admin/tnsnames.ora
 jamoproy =
   (DESCRIPTION =
