@@ -17,11 +17,7 @@ NOCYCLE;
 
 CREATE TABLE LICENCIA(
     LICENCIA_ID       NUMBER(20, 0)    NOT NULL,
-<<<<<<< HEAD
     FOLIO             NUMBER(8,0)     NOT NULL,
-=======
-    FOLIO             NUMBER(8,0)      NOT NULL,
->>>>>>> f95c03bf3f97f400e2d242903affd262665322dd
     PERMANENTE        VARCHAR2(3)      NOT NULL,
     VIGENCIA_INICIAL  DATE,
     VIGENCIA_FINAL    DATE             NOT NULL,
