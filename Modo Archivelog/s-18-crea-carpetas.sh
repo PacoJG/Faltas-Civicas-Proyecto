@@ -11,8 +11,8 @@ chown -R oracle:oinstall archivelogs
 chmod -R 750 archivelogs
 
 
-mkdir -p /u01/app/oracle/oradata/jamoproy/respaldo_fra/archivelog
-mkdir -p /u01/app/oracle/oradata/jamoproy/respaldo_fra/archivelog/disk_b
+mkdir -p /u01/app/oracle/oradata/jamoproy/respaldo_fra/archivelogs
+mkdir -p /u01/app/oracle/oradata/jamoproy/respaldo_fra/archivelogs/disk_b
 
 cd /u01/app/oracle/oradata/jamoproy/respaldo_fra
 chown -R oracle:oinstall archivelogs

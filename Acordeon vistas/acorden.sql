@@ -13,3 +13,6 @@ select group#, type, member from v$logfile;
 --VER QUE GRUPO DE REDO LOGS SE STA USANDO
 select group#,sequence#, bytes/(1024*1024) size_mb, blocksize, members, status from v$log;
 
+--VER MODOD ARCHIVELOG
+select name, log_mode from v$database;
+
