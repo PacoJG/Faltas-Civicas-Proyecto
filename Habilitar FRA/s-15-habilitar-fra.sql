@@ -6,6 +6,7 @@
 --Se crea la carpeta para FRA
 !mkdir /u01/app/oracle/oradata/jamoproy/respaldo_fra
 
+
 --Se modifica tamaño cuando se calculen los datos
 alter system set db_recovery_file_dest_size=1700m scope=both;
 
