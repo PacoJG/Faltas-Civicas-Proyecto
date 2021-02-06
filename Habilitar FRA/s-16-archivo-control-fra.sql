@@ -9,11 +9,10 @@
 create pfile from spfile;
 
 shutdown immediate
-
 --Mover una copia de un archivo de control a la ubicación de la fra
 !mv /u01/app/oracle/oradata/jamoproy/control01.ctl /u01/app/oracle/oradata/jamoproy/respaldo_fra/controlfile/control01.ctl
 
-startup nomount;
+startup
 
 alter system set control_files ='/u01/app/oracle/oradata/jamoproy/respaldo_fra/controlfile/control01.ctl',
 '/disk_2/app/oracle/oradata/jamoproy/control02.ctl',

@@ -27,3 +27,5 @@ to
 '/u01/app/oracle/oradata/jamoproy/respaldo_fra/disk_3/redo01c.log';
 
 alter database open;
+
+create pfile from spfile;
