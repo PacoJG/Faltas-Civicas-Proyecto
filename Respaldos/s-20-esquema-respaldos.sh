@@ -68,8 +68,8 @@ chown -R oracle:oinstall /u01/app/oracle/oradata/jamoproy/respaldos_scripts
 chmod -R 755 /u01/app/oracle/oradata/jamoproy/respaldos_scripts
 
 cat <<'EOF' > /var/spool/cron/oracle
-0 12 * * 5 /u01/app/oracle/oradata/jamoproy/respaldos_scripts/run_respaldo_niv0.sh
-0 12 * * 6,7,1,2,3,4 /u01/app/oracle/oradata/jamoproy/respaldos_scripts/run_respaldo_niv1.sh
+0 12 * * 7 /u01/app/oracle/oradata/jamoproy/respaldos_scripts/run_respaldo_niv0.sh
+0 12 * * 1,2,3,4,5,6 /u01/app/oracle/oradata/jamoproy/respaldos_scripts/run_respaldo_niv1.sh
 0 12 1 * * /u01/app/oracle/oradata/jamoproy/respaldos_scripts/run_respaldo_full.sh
 EOF
 
