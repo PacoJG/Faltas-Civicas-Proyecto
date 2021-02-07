@@ -1,7 +1,7 @@
 --@Autores: Jaime Garcia Frnacisco
 --     	    Mora Magaña Jose David Divad
 --@Fecha:   01/02/2021
---@Descripcion: Deshabilitar la generación de datos redo en la carga inicial
+--@Descripcion: Habilitar datos redo
 
 connect sys/systemproy as sysdba
 
