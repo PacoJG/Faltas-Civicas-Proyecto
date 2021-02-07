@@ -12,73 +12,75 @@ whenever sqlerror exit rollback
 declare
     v_count number;
     v_max_falta number;
+    v_max_cliente number;
+    v_max_num_falta number;
+    v_id number;
 
     cursor cur_insert is
         select falta_civil_seq.nextval as falta_civil_id, cliente, numero_falta,
             sysdate as fecha_estatus, tipo_falta, puntos_negativos, sysdate as fecha_ocurrencia,
             sysdate + 30 as fecha_limite, estatus_id, auto_id, dispositivo_id
-        from falta_civil sample(60) 
-        where rownum <= 50;
+        from falta_civil
+        where falta_civil_id <= 100;
     
     cursor cur_update is
-        select * from falta_civil sample(60) 
-        where rownum <= 50;
+        select * from falta_civil
+        where falta_civil_id <= 100;
 
 begin
     --INSERT
     v_count := 0;
-    for r un cur_insert loop
+    select max(cliente) into v_max_cliente from falta_civil;
+    select max(numero_falta) into v_max_num_falta from falta_civil;
+    select max(falta_civil_id) into v_id from falta_civil;
+    v_id := v_id +1;
+    v_max_cliente := v_max_cliente + 1;
+    v_max_num_falta := v_max_num_falta +1;
+    for r in cur_insert loop
         insert into falta_civil(falta_civil_id, cliente, numero_falta, fecha_estatus,
             tipo_falta, puntos_negativos, fecha_ocurrencia, fecha_limite, estatus_id, 
             auto_id, dispositivo_id)
-        values (r.falta_civil_id, r.cliente, r.numero_falta, r.fecha_estatus, r.tipo_falta
-            r.puntos_negativos, r.fecha_ocurrencia, r.fecha_limite, r.estatus_id, r.auto_id,
-            r.dispositivo_id);
+        values (v_id,v_max_cliente, v_max_num_falta, r.fecha_estatus, r.tipo_falta,
+            r.puntos_negativos, r.fecha_ocurrencia, r.fecha_limite, dbms_random.value(1,4), r.auto_id,
+            dbms_random.value(1,100));
+        
+        insert into falta_evidencia(falta_evidencia_id, foto_video, falta_civil_id)
+        values (falta_evidencia_seq.nextval, to_blob(hextoraw('ab9ef23123a')), v_id);
+
         v_count := v_count + sql%rowcount;
+        v_id := v_id + 1;
+        v_max_cliente := v_max_cliente + 1;
+        v_max_num_falta := v_max_num_falta +1;
     end loop;
 
     dbms_output.put_line('Registros insertados en FALTA_CIVIL: ' || v_count);
+    dbms_output.put_line('Registros insertados en EVIDENCIA_FALTA: ' || v_count);
     select max(falta_civil_id) into v_max_falta from falta_civil;
     --UPDATE
     v_count := 0;
 
     for r in cur_update loop
-        update falta_civil set estatus_falta_id = r.estatus_falta_id,
-        numero_falta = r.numero_falta, fecha_estatus = r.fecha_estatus
+        update falta_civil set estatus_id = dbms_random.value(1,4),
+        dispositivo_id = dbms_random.value(1,100), fecha_estatus = r.fecha_estatus
         where falta_civil_id = (select trunc(dbms_random.value(1,v_max_falta))from dual);
         v_count := v_count + sql%rowcount;
     end loop;
     dbms_output.put_line('Registros modificados en FALTA_CIVIL: ' || v_count);
-end:
+end;
 /
 
 --Redo para FALTA_EVIDENCIA
 declare
     v_count number;
-    
-    cursor cur_evidencia_insert is
-        select falta_civil_id
-        from falta_civil f
-        where no exists(
-            select 1 from falta_evidencia e
-            where f.falta_civil_id = e.falta_civil_id
-        ) and rownum<=40;
     cursor cur_update is
-        select * from falta_evidencia sample(95)
-        where rownum<=90;
+        select * from falta_evidencia
+        where falta_evidencia_id <= 100;
     cursor cur_delete is
-        select * from falta_evidencia sample(20)
-        where rownum<=30;
+        select * from falta_evidencia
+        where falta_evidencia_id<=70;
 begin
     v_count := 0;
     -- INSERT
-    for r in cur_evidencia_insert loop
-        insert into falta_evidencia(falta_evidencia_id, foto_video, falta_civil_id)
-        values(falta_evidencia_seq.nextval, to_blob(hextoraw('ab9ef23123a')), r.falta_civil_id);
-        v_count := v_count + 1;
-    end loop;
-    dbms_output.put_line('Registros insertados en FALTA_EVIDENCIA: ' || v_count);
-
     v_count := 0;
 
     --UPDATE
@@ -104,15 +106,11 @@ end;
 declare
     v_count number;
     cursor cur_insert is
-        select falta_civil_id
-        from falta_civil f where not exists(
-            select 1
-            from historico_falta h
-            where h.falta_civil_id = f.falta_civil_id
-        ) and rownum <=30;
+        select * from historico_falta
+        where historico_falta_id <=50;
     cursor cur_update is
-        select * from historico_falta sample(30)
-        where rownum <=30;
+        select * from historico_falta
+        where historico_falta_id <=100;
 begin
     --INSERT
     v_count := 0;
@@ -130,7 +128,7 @@ begin
     for r in cur_update loop
         update historico_falta set
             fecha = r.fecha + dbms_random.value(1,20),
-            estatus_falta = round(dbms_random.value(1,4))
+            estatus_falta_id = round(dbms_random.value(1,4))
             where historico_falta_id = r.historico_falta_id;
             v_count := v_count + 1;
     end loop;
@@ -138,14 +136,15 @@ begin
 end;
 /
 
+
 --Redo para ALTO, INVONVENIENTE y VELOCIDAD
 declare
     cursor cur_update_alto is
-        select falta_civil_id, crucero from alto sample(90) where rownum<=50;
+        select falta_civil_id, crucero from alto where falta_civil_id<=50;
     cursor cur_update_vel is
-        select falta_civil_id from velocidad sample(90) where rownum<=50;
+        select falta_civil_id from velocidad where falta_civil_id<=50;
     cursor cur_update_incon is
-        select falta_civil_id, centro_detencion from inconveniente sample(90) where rownum<=50;
+        select falta_civil_id, centro_detencion from inconveniente  where falta_civil_id<=50;
     v_count number;
 begin
     --UPDATE para ALTO
@@ -181,6 +180,8 @@ begin
         v_count := v_count +1;
     end loop;
     dbms_output.put_line('Registros modificados en INCONVENIENTE: ' || v_count);
+end;
+/
 
 Prompt Confirmando Cambios
 commit;
