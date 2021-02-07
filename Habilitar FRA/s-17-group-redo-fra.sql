@@ -11,20 +11,20 @@
 shutdown immediate
 --Se copia el grupo 1 a su nueva ubicación
 !mv /u01/app/oracle/oradata/jamoproy/REDO_LOGS/redo01a.log /u01/app/oracle/oradata/jamoproy/respaldo_fra/u01/redo01a.log
-!mv /disk_2/app/oracle/oradata/jamoproy/REDO_LOGS/redo01b.log /u01/app/oracle/oradata/jamoproy/respaldo_fra/disk_2/redo01b.log
-!mv /disk_3/app/oracle/oradata/jamoproy/REDO_LOGS/redo01c.log /u01/app/oracle/oradata/jamoproy/respaldo_fra/disk_3/redo01c.log
+!mv /disk_2/app/oracle/oradata/jamoproy/REDO_LOGS/redo02b.log /u01/app/oracle/oradata/jamoproy/respaldo_fra/disk_2/redo02b.log
+!mv /disk_3/app/oracle/oradata/jamoproy/REDO_LOGS/redo03c.log /u01/app/oracle/oradata/jamoproy/respaldo_fra/disk_3/redo03c.log
 
 startup mount
 
 alter database
 rename file
 '/u01/app/oracle/oradata/jamoproy/REDO_LOGS/redo01a.log',
-'/disk_2/app/oracle/oradata/jamoproy/REDO_LOGS/redo01b.log',
-'/disk_3/app/oracle/oradata/jamoproy/REDO_LOGS/redo01c.log'
+'/disk_2/app/oracle/oradata/jamoproy/REDO_LOGS/redo02b.log',
+'/disk_3/app/oracle/oradata/jamoproy/REDO_LOGS/redo03c.log'
 to
 '/u01/app/oracle/oradata/jamoproy/respaldo_fra/u01/redo01a.log',
-'/u01/app/oracle/oradata/jamoproy/respaldo_fra/disk_2/redo01b.log',
-'/u01/app/oracle/oradata/jamoproy/respaldo_fra/disk_3/redo01c.log';
+'/u01/app/oracle/oradata/jamoproy/respaldo_fra/disk_2/redo02b.log',
+'/u01/app/oracle/oradata/jamoproy/respaldo_fra/disk_3/redo03c.log';
 
 alter database open;
 
